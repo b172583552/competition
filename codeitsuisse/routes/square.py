@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
     #logging.info("My result :{}".format(result))
     #return json.dumps(result)
 
-def to_cumulative(stream: list):
+def to_cumulative():
     # Assume the information of every product will be returned at each second even though there is no update information at that second
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
@@ -64,11 +64,11 @@ def to_cumulative(stream: list):
     logging.info("My result :{}".format(last_out))
     return json.dumps(last_out)
 
-    raise Exception
+
 
 
 @app.route('/tickerStreamPart2', methods=['POST'])
-def to_cumulative_delayed(stream: list, quantity_block: int):
+def to_cumulative_delayed():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
     stream = data.get("stream")
@@ -130,7 +130,6 @@ def to_cumulative_delayed(stream: list, quantity_block: int):
 
     logging.info("My result :{}".format(lastlast_out))
     return json.dumps(lastlast_out)
-
-    raise Exception
+n
 
 
