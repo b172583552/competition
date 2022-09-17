@@ -192,7 +192,7 @@ def to_cumulative_delayed():
 def cryptocollapz():
     #result = []
     data = request.get_json()
-    logging.info("data sent for evaluation {}".format("data coming"))
+    logging.info("data sent for evaluation {}".format(data))
     #int_ls = data.get("stream")
     """
     database = {1: 4, 2: 4}
