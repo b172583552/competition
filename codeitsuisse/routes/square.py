@@ -253,6 +253,8 @@ def calendarday():
         month = d[5:7]
         if month[0] == '0':
             month = int(month[-1])
+        elif month == '10':
+            month = 10
         elif month == '11':
             month = 11
         elif month == '12':
