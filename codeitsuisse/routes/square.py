@@ -245,9 +245,9 @@ def calendarday():
     # judge
     if result == []:
         out = "       ,       ,       ,       ,       ,       ,       ,       ,       ,       ,       ,       ,"
-        out2=[y]
+        out2=[2001]
         resultJson = {}
-        logging.info("My result :{}".format(out))
+        logging.info("My result :{}".format(resultJson))
         resultJson["part1"] = out
         resultJson["part2"] = out2
         return json.dumps(resultJson)
@@ -367,7 +367,7 @@ def calendarday():
             out2.append(num)
 
     resultJson = {}
-    logging.info("My result :{}".format(out))
+    logging.info("My result :{}".format(resultJson))
     resultJson["part1"] = out
     resultJson["part2"] = out2
     return json.dumps(resultJson)
