@@ -401,8 +401,43 @@ def quordleKeyboard():
     for c in dic:
         if dic[c]!=[]:
             out+=str(dic[c])
+    left=""
+    for c in dic:
+        if dic[c]==[]:
+            left+=c
+    num_ls = data.get("numbers")
+    num_1 = []
+    for i in range(0, 5):
+        num_1.append(num_ls[i])
+    num_2 = []
+    for i in range(5, 10):
+        num_2.append(num_ls[i])
+    num_3 = []
+    for i in range(10, 15):
+        num_3.append(num_ls[i])
+    num_4 = []
+    for i in range(15, 20):
+        num_4.append(num_ls[i])
+    num_5 = []
+    for i in range(20, 25):
+        num_5.append(num_ls[i])
+    ls=[num_1,num_2,num_3,num_4,num_5]
+    out2=""
+    for i in range(len(ls)):
+        b = ''
+        for n in ls[i]:
+            if str(n) in out:
+                b += '1'
+            else:
+                b += '0'
+        out2+=chr(ord('A') + int(b, 2)-1)
+
+    out2+=left
+
+
 
     resultJson = {}
     logging.info("My result :{}".format(out))
     resultJson["part1"] = out
+    resultJson["part2"] = out2
     return json.dumps(resultJson)
