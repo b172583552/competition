@@ -373,3 +373,36 @@ def calendarday():
     resultJson["part1"] = out
     resultJson["part2"] = out2
     return json.dumps(resultJson)
+
+@app.route('/quordleKeyboard', methods=['POST'])
+def quordleKeyboard():
+    data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
+    ans_ls = data.get("answers")
+    atp_ls = data.get("attempts")
+    ans_str = ""
+    for i in ans_ls:
+        ans_str += i
+    dic = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': [], 'I': [], 'J': [], 'K': [], 'L': [],
+           'M': [], 'N': [], 'O': [], 'P': [], 'Q': [], 'R': [], 'S': [], 'T': [], 'U': [], 'V': [], 'W': [], 'X': [],
+           'Y': [], 'Z': []}
+    n = len(atp_ls)
+    for a in atp_ls:
+        if a in ans_ls:
+            ans_ls.remove(a)
+            ans_str = ""
+            for i in ans_ls:
+                ans_str += i
+        for c in a:
+            if (c not in ans_str) and (dic[c] == []):
+                dic[c] = n
+        n = n - 1
+    out=""
+    for c in dic:
+        if dic[c]!=[]:
+            out+=str(dic[c])
+
+    resultJson = {}
+    logging.info("My result :{}".format(out))
+    resultJson["part1"] = out
+    return json.dumps(resultJson)
