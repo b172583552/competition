@@ -189,10 +189,12 @@ def to_cumulative_delayed():
     return json.dumps(resultJson)
 
 @app.route('/CryptoCollapz', methods=['POST'])
-def crytocollapz():
+def cryptocollapz():
     result = []
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
+    #int_ls = data.get("stream")
+
 
     for i in range(len(data)):
         result_i = []
@@ -213,5 +215,8 @@ def crytocollapz():
             result_i.append(int(maxium))
         result.append(result_i)
 
+
+
     logging.info("My result :{}".format(result))
+    #resultJson["output"] = result
     return json.dumps(result)
