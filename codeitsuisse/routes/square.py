@@ -192,6 +192,7 @@ def to_cumulative_delayed():
 def cryptocollapz():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
+    '''
     database = {1: 4, 2: 4}
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -213,10 +214,10 @@ def cryptocollapz():
                     if (n not in database):
                         database[n] = max(tem_num)
                 data[i][j] = database[data[i][j]]
-
+    '''
 
     logging.info("My result :{}".format(data))
-    return json.dumps([4,4,16,4,16])
+    return json.dumps("hello world")
 
 @app.route('/calendarDays', methods=['POST'])
 def calendarDays():
