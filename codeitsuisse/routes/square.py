@@ -218,7 +218,7 @@ def cryptocollapz():
 
 
 
-@app.route('/calendarday', methods=['POST'])
+@app.route('/calendarDays', methods=['POST'])
 def calendarday():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
