@@ -248,6 +248,7 @@ def calendarday():
         resultJson = {}
         logging.info("My result :{}".format(out))
         resultJson["part1"] = out
+        resultJson["part2"] = [y]
         return json.dumps(resultJson)
 
     week_info = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11: [], 12: []}
@@ -266,7 +267,9 @@ def calendarday():
         elif month == '12':
             month = 12
         week_info[month].append(week)
-    out=""
+
+
+
     for key in week_info:
         if (week_info[key]==[]):
             out=out+"       ,"
@@ -307,16 +310,19 @@ def calendarday():
             else:
                 temp+=" "
             out=out+temp+','
+
+
+
+
+
     str_info = out
-
-
-
 
     for i in range(0, len(str_info)):
         if str_info[i] == ' ':
             break
         i += 1
     year = i + 2001
+    out2 = [year]
 
     date_ls = str_info.split(',')
     week_info = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11: [], 12: []}
@@ -346,10 +352,9 @@ def calendarday():
             if month_info[6] != ' ':
                 week_info[m].append(7)
 
-    out2 = [year]
     first_day_of_year = datetime.date(year, 1, 1)
     for m in week_info:
-        first_day= datetime.date(year, m, 1)
+        first_day = datetime.date(year, m, 1)
         week = datetime.datetime.weekday(first_day)
         for i in week_info[m]:
             delta = i + 7 - week - 1
@@ -358,9 +363,22 @@ def calendarday():
             num = interval.days + 1
             out2.append(num)
 
-    resultJson = {}
+    """out2 = [year]
+    first_day_of_year = datetime.date(year, 1, 1)
+    for m in week_info:
+        first_day= datetime.date(year, m, 1)
+        week = datetime.datetime.weekday(first_day)
+        first_Monday_delta = 1 + 7 - week - 1
+        first_Monday = first_day + datetime.timedelta(first_Monday_delta)
 
+        for i in week_info[m]:
+            wanted_day = first_day + datetime.timedelta(delta)
+            interval = wanted_day - first_day_of_year
+            num = interval.days + 1
+            out2.append(num)"""
+
+    resultJson = {}
+    logging.info("My result :{}".format(out))
     resultJson["part1"] = out
     resultJson["part2"] = out2
-    logging.info("My result :{}".format(resultJson))
     return json.dumps(resultJson)
