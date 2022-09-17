@@ -48,7 +48,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/pythonProject" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -110,12 +110,39 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="1007" y="344" key="FileChooserDialogImpl" timestamp="1663380182433">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1007" y="344" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1663380182433" />
+    <state width="1899" height="279" key="GridCell.Tab.0.bottom" timestamp="1663382810018">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1663382810018" />
+    <state width="1899" height="279" key="GridCell.Tab.0.center" timestamp="1663382810018">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1663382810018" />
+    <state width="1899" height="279" key="GridCell.Tab.0.left" timestamp="1663382810018">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1663382810018" />
+    <state width="1899" height="279" key="GridCell.Tab.0.right" timestamp="1663382810018">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1663382810018" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/App.py</url>
           <line>9</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/App.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -187,3 +187,31 @@ def to_cumulative_delayed():
     logging.info("My result :{}".format(result))
     resultJson["output"] = result
     return json.dumps(resultJson)
+
+@app.route('/CryptoCollapz', methods=['POST'])
+def crytocollapz():
+    result = []
+    data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
+
+    for i in range(len(data)):
+        result_i = []
+        for j in range(len(data[i])):
+            maxium = data[i][j]
+            current = data[i][j]
+            if current == 1:
+                maxium = 4
+            if current == 2:
+                maxium = 4
+            while (current != 1):
+                if current % 2 == 0:
+                    current = current / 2
+                else:
+                    current = current * 3 + 1
+                if current > maxium:
+                    maxium = current
+            result_i.append(int(maxium))
+        result.append(result_i)
+
+    logging.info("My result :{}".format(result))
+    return json.dumps(result)
