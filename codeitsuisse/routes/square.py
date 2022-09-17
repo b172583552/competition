@@ -188,10 +188,10 @@ def to_cumulative_delayed():
     resultJson["output"] = result
     return json.dumps(resultJson)
 
-@app.route('/CryptoCollapz', methods=['POST'])
+@app.route('/cryptocollapz', methods=['POST'])
 def cryptocollapz():
     data = request.get_json()
-    '''
+
     logging.info("data sent for evaluation {}".format(data))
     
     database = {1: 4, 2: 4}
@@ -218,7 +218,7 @@ def cryptocollapz():
     
 
     logging.info("My result :{}".format(data))
-    '''
+
     return json.dumps("hello world")
 
 @app.route('/calendarDays', methods=['POST'])
