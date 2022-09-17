@@ -194,7 +194,7 @@ def cryptocollapz():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
     #int_ls = data.get("stream")
-
+    """
     database = {1: 4, 2: 4}
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -220,6 +220,7 @@ def cryptocollapz():
 
     logging.info("My result :{}".format(data))
     #resultJson["output"] = result
+    """
     return json.dumps(data)
 
 
