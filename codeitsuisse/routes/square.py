@@ -190,36 +190,33 @@ def to_cumulative_delayed():
 
 @app.route('/cryptocollapz', methods=['POST'])
 def cryptocollapz():
-    data = request.get_json()
+        result = []
+        data = request.get_json()
+        logging.info("data sent for evaluation {}".format(data))
+        # int_ls = data.get("stream")
 
-    logging.info("data sent for evaluation {}".format(data))
-    
-    database = {1: 4, 2: 4}
-    for i in range(len(data)):
-        for j in range(len(data[i])):
-            if data[i][j] in database:
-                data[i][j] = database[data[i][j]]
-                continue
-            if math.log2(data[i][j]) == int(math.log2(data[i][j])):
-                continue
-            else:
-                tem_num = [data[i][j]]
-                while ((tem_num[-1] not in database) and (math.log2(tem_num[-1]) != int(math.log2(tem_num[-1])))):
-                    if tem_num[-1] % 2 == 0:
-                        tem_num.append(int(tem_num[-1] / 2))
+        for i in range(len(data)):
+            result_i = []
+            for j in range(len(data[i])):
+                maxium = data[i][j]
+                current = data[i][j]
+                if current == 1:
+                    maxium = 4
+                if current == 2:
+                    maxium = 4
+                while (current != 1):
+                    if current % 2 == 0:
+                        current = current / 2
                     else:
-                        tem_num.append(int(tem_num[-1] * 3 + 1))
-                if tem_num[-1] in database:
-                    tem_num.append(database[tem_num[-1]])
-                for n in tem_num:
-                    if (n not in database):
-                        database[n] = max(tem_num)
-                data[i][j] = database[data[i][j]]
-    
+                        current = current * 3 + 1
+                    if current > maxium:
+                        maxium = current
+                result_i.append(int(maxium))
+            result.append(result_i)
 
-    logging.info("My result :{}".format(data))
+        logging.info("My result :{}".format(result))
+        return json.dumps(result)
 
-    return json.dumps(data)
 
 @app.route('/calendarDays', methods=['POST'])
 def calendarDays():
