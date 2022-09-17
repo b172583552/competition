@@ -190,35 +190,32 @@ def to_cumulative_delayed():
 
 @app.route('/CryptoCollapz', methods=['POST'])
 def cryptocollapz():
-    #result = []
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
-    #int_ls = data.get("stream")
-
+    database = {1: 4, 2: 4}
     for i in range(len(data)):
         for j in range(len(data[i])):
-            maxium = data[i][j]
-            if data[i][j] == 1:
-                data[i][j] = 4
+            if data[i][j] in database:
+                data[i][j] = database[data[i][j]]
                 continue
-            if data[i][j] == 2:
-                data[i][j] = 4
+            if math.log2(data[i][j]) == int(math.log2(data[i][j])):
                 continue
-            while (data[i][j] != 1):
-                if data[i][j] % 2 == 0:
-                    data[i][j] = data[i][j] / 2
-                else:
-                    data[i][j] = data[i][j] * 3 + 1
-                if data[i][j] > maxium:
-                    maxium = data[i][j]
-                if (math.log2(data[i][j]) == int(math.log2(data[i][j]))):
-                    break
-
-            data[i][j] = int(maxium)
+            else:
+                tem_num = [data[i][j]]
+                while ((tem_num[-1] not in database) and (math.log2(tem_num[-1]) != int(math.log2(tem_num[-1])))):
+                    if tem_num[-1] % 2 == 0:
+                        tem_num.append(int(tem_num[-1] / 2))
+                    else:
+                        tem_num.append(int(tem_num[-1] * 3 + 1))
+                if tem_num[-1] in database:
+                    tem_num.append(database[tem_num[-1]])
+                for n in tem_num:
+                    if (n not in database):
+                        database[n] = max(tem_num)
+                data[i][j] = database[data[i][j]]
 
 
     logging.info("My result :{}".format(data))
-    #resultJson["output"] = result
     return json.dumps(data)
 
 @app.route('/calendarDays', methods=['POST'])
