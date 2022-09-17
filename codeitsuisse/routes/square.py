@@ -266,9 +266,6 @@ def calendarday():
         elif month == '12':
             month = 12
         week_info[month].append(week)
-
-
-
     out=""
     for key in week_info:
         if (week_info[key]==[]):
@@ -310,8 +307,59 @@ def calendarday():
             else:
                 temp+=" "
             out=out+temp+','
+    str_info = out
 
-    resultJson={}
+
+
+
+    for i in range(0, len(str_info)):
+        if str_info[i] == ' ':
+            break
+        i += 1
+    year = i + 2001
+
+    date_ls = str_info.split(',')
+    week_info = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11: [], 12: []}
+    for m in range(1, 13):  # month
+        month_info = date_ls[m - 1]  # a string contains some characters
+        if month_info == "alldays":
+            week_info[m] = [1, 2, 3, 4, 5, 6, 7]
+        elif month_info == "weekend":
+            week_info[m] = [6, 7]
+        elif month_info == "weekday":
+            week_info[m] = [1, 2, 3, 4, 5]
+        elif month_info == "       ":
+            week_info[m] = []
+        else:
+            if month_info[0] != ' ':
+                week_info[m].append(1)
+            if month_info[1] != ' ':
+                week_info[m].append(2)
+            if month_info[2] != ' ':
+                week_info[m].append(3)
+            if month_info[3] != ' ':
+                week_info[m].append(4)
+            if month_info[4] != ' ':
+                week_info[m].append(5)
+            if month_info[5] != ' ':
+                week_info[m].append(6)
+            if month_info[6] != ' ':
+                week_info[m].append(7)
+
+    out2 = [year]
+    first_day_of_year = datetime.date(year, 1, 1)
+    for m in week_info:
+        first_day= datetime.date(year, m, 1)
+        week = datetime.datetime.weekday(first_day)
+        for i in week_info[m]:
+            delta = i + 7 - week - 1
+            wanted_day = first_day + datetime.timedelta(delta)
+            interval = wanted_day - first_day_of_year
+            num = interval.days + 1
+            out2.append(num)
+
+    resultJson = {}
     logging.info("My result :{}".format(out))
     resultJson["part1"] = out
+    resultJson["part2"] = out2
     return json.dumps(resultJson)
