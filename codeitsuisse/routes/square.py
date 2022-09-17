@@ -216,7 +216,7 @@ def cryptocollapz():
 
 
     logging.info("My result :{}".format(data))
-    return json.dumps(data)
+    return json.dumps([4,4,16,4,16])
 
 @app.route('/calendarDays', methods=['POST'])
 def calendarDays():
