@@ -195,24 +195,18 @@ def cryptocollapz():
 
     for i in range(len(data)):
         for j in range(len(data[i])):
-            maxium = data[i][j]
-            if data[i][j] == 1:
-                data[i][j] = 4
-                continue
-            if data[i][j] == 2:
-                data[i][j] = 4
-                continue
-            while (data[i][j] != 1):
+
+            maximum = data[i][j]
+            while math.log2(data).is_integer():
                 if data[i][j] % 2 == 0:
                     data[i][j] = data[i][j] / 2
                 else:
                     data[i][j] = data[i][j] * 3 + 1
-                if data[i][j] > maxium:
-                    maxium = data[i][j]
-                if (math.log2(data[i][j]) == int(math.log2(data[i][j]))):
-                    break
+                if data[i][j] > maximum:
+                    maximum = data[i][j]
 
-            data[i][j] = int(maxium)
+
+            data[i][j] = int(maximum)
     logging.info("My result :{}".format(data))
     return json.dumps(data)
 
@@ -233,7 +227,7 @@ def calendarday():
         first_day = datetime.date(y, 1, 1)
         wanted_day = first_day + datetime.timedelta(day - 1)
         week = datetime.datetime.weekday(wanted_day)
-        wanted_day = str(wanted_day) + '-' + str(week)
+        wanted_day = str(wanted_day) + '-' + str(week+1)
         result.append(wanted_day)
 
     # judge
@@ -260,7 +254,6 @@ def calendarday():
         elif month == '12':
             month = 12
         week_info[month].append(week)
-
 
 
 
