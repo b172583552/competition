@@ -359,7 +359,8 @@ def calendarday():
             out2.append(num)
 
     resultJson = {}
-    logging.info("My result :{}".format(out))
+
     resultJson["part1"] = out
     resultJson["part2"] = out2
+    logging.info("My result :{}".format(resultJson))
     return json.dumps(resultJson)
