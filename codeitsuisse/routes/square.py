@@ -190,32 +190,32 @@ def to_cumulative_delayed():
 
 @app.route('/cryptocollapz', methods=['POST'])
 def cryptocollapz():
-        result = []
-        data = request.get_json()
-        logging.info("data sent for evaluation {}".format(data))
-        # int_ls = data.get("stream")
+    result = []
+    data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
+    # int_ls = data.get("stream")
 
-        for i in range(len(data)):
-            result_i = []
-            for j in range(len(data[i])):
-                maxium = data[i][j]
-                current = data[i][j]
-                if current == 1:
-                    maxium = 4
-                if current == 2:
-                    maxium = 4
-                while (current != 1):
-                    if current % 2 == 0:
-                        current = current / 2
-                    else:
-                        current = current * 3 + 1
-                    if current > maxium:
-                        maxium = current
-                result_i.append(int(maxium))
-            result.append(result_i)
+    for i in range(len(data)):
+        result_i = []
+        for j in range(len(data[i])):
+            maxium = data[i][j]
+            current = data[i][j]
+            if current == 1:
+                maxium = 4
+            if current == 2:
+                maxium = 4
+            while (current != 1):
+                if current % 2 == 0:
+                    current = current / 2
+                else:
+                    current = current * 3 + 1
+                if current > maxium:
+                    maxium = current
+            result_i.append(int(maxium))
+        result.append(result_i)
 
-        logging.info("My result :{}".format(result))
-        return json.dumps(result)
+    logging.info("My result :{}".format(result))
+    return json.dumps(result)
 
 
 @app.route('/calendarDays', methods=['POST'])
